@@ -9,14 +9,16 @@ import com.smusgrave.app.baseandroid.common.BasePresenter;
 
 import javax.inject.Inject;
 
+import butterknife.OnClick;
+
 public class MainFragment extends BaseFragment implements MainView {
 
     @Inject
-    MainPresenter presenter;
+    MainPresenterImpl presenter;
 
     public static MainFragment newInstance() {
-        Bundle args = new Bundle();
         MainFragment fragment = new MainFragment();
+        Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,6 +40,16 @@ public class MainFragment extends BaseFragment implements MainView {
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    protected void bindView() {
+        presenter.bindView(this);
+    }
+
+    @OnClick(R.id.button)
+    void buttonClick() {
+        presenter.handleButtonClick();
     }
 
 }

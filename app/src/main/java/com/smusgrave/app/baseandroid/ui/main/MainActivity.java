@@ -1,7 +1,6 @@
 package com.smusgrave.app.baseandroid.ui.main;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,13 +16,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (findViewById(R.id.fragment_container) != null) {
-            Fragment fragment = MainFragment.newInstance();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment, FRAGMENT_TAG)
-                    .commit();
-        }
+        fragment = MainFragment.newInstance();
+        setupFragment(FRAGMENT_TAG);
     }
 
     @Override

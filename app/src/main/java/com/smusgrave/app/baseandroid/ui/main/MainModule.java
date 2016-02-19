@@ -18,8 +18,8 @@ public class MainModule {
     }
 
     @Provides
-    public MainPresenter providePresenter(MainView view) {
-        return new MainPresenter(view);
+    public MainPresenterImpl providePresenter() {
+        return new MainPresenterImpl();
     }
 
 }

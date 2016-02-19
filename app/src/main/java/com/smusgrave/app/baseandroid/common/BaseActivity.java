@@ -1,6 +1,7 @@
 package com.smusgrave.app.baseandroid.common;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -14,6 +15,7 @@ import icepick.Icepick;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    protected Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         setupToolbar();
     }
 
+    protected void setupFragment(String tag) {
+        if (findViewById(R.id.fragment_container) != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment, tag)
+                    .commit();
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -49,7 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Icepick.saveInstanceState(this, outState);
     }
 
-    public void setupToolbar() {
+    private void setupToolbar() {
         toolbar = ButterKnife.findById(this, R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);

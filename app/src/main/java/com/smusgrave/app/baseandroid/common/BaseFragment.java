@@ -44,6 +44,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         injectDependencies();
+        bindView();
     }
 
     @Override
@@ -77,6 +78,8 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     private void injectDependencies() {
         setUpComponent(App.getApp(getActivity()).getComponent());
     }
+
+    protected abstract void bindView();
 
     private void bindViews(View rootView) {
         ButterKnife.bind(this, rootView);

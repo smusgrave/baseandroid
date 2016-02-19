@@ -14,6 +14,6 @@ public interface MainComponent {
 
     void inject(MainFragment mainFragment);
 
-    MainPresenter getPresenter();
+    MainPresenterImpl getPresenter();
 
 }

@@ -2,21 +2,8 @@ package com.smusgrave.app.baseandroid.ui.main;
 
 import com.smusgrave.app.baseandroid.common.BasePresenter;
 
-public class MainPresenter extends BasePresenter {
+public interface MainPresenter extends BasePresenter<MainView> {
 
-    MainView view;
+    void handleButtonClick();
 
-    public MainPresenter(MainView view) {
-        this.view = view;
-    }
-
-    @Override
-    public void onStart() {
-
-    }
-
-    @Override
-    public void onStop() {
-
-    }
 }
