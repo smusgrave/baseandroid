@@ -1,7 +1,6 @@
-package com.smusgrave.app.baseandroid.presenter;
+package com.smusgrave.app.baseandroid.ui.main;
 
 import com.smusgrave.app.baseandroid.common.BasePresenter;
-import com.smusgrave.app.baseandroid.ui.view.MainView;
 
 public class MainPresenter extends BasePresenter {
 

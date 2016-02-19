@@ -1,4 +1,4 @@
-package com.smusgrave.app.baseandroid.ui.activity;
+package com.smusgrave.app.baseandroid.ui.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,6 @@ import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseActivity;
 import com.smusgrave.app.baseandroid.common.BasePresenter;
-import com.smusgrave.app.baseandroid.ui.fragment.MainFragment;
 
 public class MainActivity extends BaseActivity {
 

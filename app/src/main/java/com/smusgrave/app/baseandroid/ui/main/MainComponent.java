@@ -1,10 +1,7 @@
-package com.smusgrave.app.baseandroid.component;
+package com.smusgrave.app.baseandroid.ui.main;
 
 import com.smusgrave.app.baseandroid.AppComponent;
-import com.smusgrave.app.baseandroid.module.MainModule;
-import com.smusgrave.app.baseandroid.presenter.MainPresenter;
 import com.smusgrave.app.baseandroid.scope.PerFragment;
-import com.smusgrave.app.baseandroid.ui.fragment.MainFragment;
 
 import dagger.Component;
 

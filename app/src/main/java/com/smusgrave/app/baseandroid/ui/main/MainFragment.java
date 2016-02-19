@@ -1,4 +1,4 @@
-package com.smusgrave.app.baseandroid.ui.fragment;
+package com.smusgrave.app.baseandroid.ui.main;
 
 import android.os.Bundle;
 
@@ -6,10 +6,6 @@ import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseFragment;
 import com.smusgrave.app.baseandroid.common.BasePresenter;
-import com.smusgrave.app.baseandroid.component.DaggerMainComponent;
-import com.smusgrave.app.baseandroid.module.MainModule;
-import com.smusgrave.app.baseandroid.presenter.MainPresenter;
-import com.smusgrave.app.baseandroid.ui.view.MainView;
 
 import javax.inject.Inject;
 

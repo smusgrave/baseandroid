@@ -1,7 +1,4 @@
-package com.smusgrave.app.baseandroid.module;
-
-import com.smusgrave.app.baseandroid.presenter.MainPresenter;
-import com.smusgrave.app.baseandroid.ui.view.MainView;
+package com.smusgrave.app.baseandroid.ui.main;
 
 import dagger.Module;
 import dagger.Provides;
