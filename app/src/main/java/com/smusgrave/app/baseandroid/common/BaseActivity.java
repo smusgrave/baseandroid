@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
         injectDependencies();
         initializePresenter();
         injectViews();
-        setupToolbar();
+        initializeToolbar();
     }
 
     protected void setupFragment(String tag) {
@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
         Icepick.saveInstanceState(this, outState);
     }
 
-    private void setupToolbar() {
+    private void initializeToolbar() {
         toolbar = ButterKnife.findById(this, R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -90,7 +90,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
     }
 
     protected void initializePresenter() {
-
     }
 
     private void injectViews() {
