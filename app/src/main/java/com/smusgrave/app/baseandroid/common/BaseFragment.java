@@ -44,7 +44,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         injectDependencies();
-        bindView();
+        bindToPresenter();
     }
 
     @Override
@@ -76,10 +76,15 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     protected abstract BasePresenter getPresenter();
 
     private void injectDependencies() {
-        setUpComponent(App.getApp(getActivity()).getComponent());
+        setupComponent(App.getApp(getActivity()).getComponent());
     }
 
-    protected abstract void bindView();
+    @SuppressWarnings("unchecked")
+    private void bindToPresenter() {
+        if (getPresenter() != null) {
+            getPresenter().bindView(this);
+        }
+    }
 
     private void bindViews(View rootView) {
         ButterKnife.bind(this, rootView);
@@ -89,7 +94,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         ButterKnife.unbind(this);
     }
 
-    protected abstract void setUpComponent(AppComponent component);
+    protected abstract void setupComponent(AppComponent component);
 
     @Override
     public void showMessage(String message, boolean longer) {
@@ -108,4 +113,5 @@ public abstract class BaseFragment extends Fragment implements BaseView {
             progressDialog.dismiss();
         }
     }
+
 }

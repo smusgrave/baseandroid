@@ -34,17 +34,12 @@ public class MainFragment extends BaseFragment implements MainView {
     }
 
     @Override
-    protected void setUpComponent(AppComponent component) {
+    protected void setupComponent(AppComponent component) {
         DaggerMainComponent.builder()
                 .appComponent(component)
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
-    }
-
-    @Override
-    protected void bindView() {
-        presenter.bindView(this);
     }
 
     @OnClick(R.id.button)
