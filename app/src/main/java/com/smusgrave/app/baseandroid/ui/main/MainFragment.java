@@ -1,7 +1,5 @@
 package com.smusgrave.app.baseandroid.ui.main;
 
-import android.os.Bundle;
-
 import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseFragment;
@@ -16,10 +14,7 @@ public class MainFragment extends BaseFragment implements MainPresenter.View {
     @Inject MainPresenter presenter;
 
     public static MainFragment newInstance() {
-        MainFragment fragment = new MainFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+        return new MainFragment();
     }
 
     @Override
