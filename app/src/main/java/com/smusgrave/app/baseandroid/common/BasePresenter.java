@@ -1,13 +1,34 @@
 package com.smusgrave.app.baseandroid.common;
 
-public interface BasePresenter<V extends BaseView> {
+public abstract class BasePresenter<V extends BasePresenter.View> {
 
-    void bindView(V view);
+    private V view;
 
-    V getView();
+    public void bindView(V view) {
+        this.view = view;
+    }
 
-    void onStart();
+    public V getView() {
+        return view;
+    }
 
-    void onStop();
+    public void onStart() {
+    }
+
+    public void onStop() {
+    }
+
+    public void onDestroy() {
+    }
+
+    public interface View {
+
+        void showMessage(String message, boolean longer);
+
+        void showProgress(String message);
+
+        void hideProgress();
+
+    }
 
 }

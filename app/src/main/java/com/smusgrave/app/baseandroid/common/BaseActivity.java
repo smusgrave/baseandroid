@@ -15,7 +15,7 @@ import com.smusgrave.app.baseandroid.R;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity extends AppCompatActivity implements BasePresenter.View {
 
     private Toolbar toolbar;
     protected Fragment fragment;
@@ -27,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(getLayout());
         injectDependencies();
-        bindToPresenter();
+        initializePresenter();
         injectViews();
         setupToolbar();
     }
@@ -58,6 +58,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (getPresenter() != null) {
+            getPresenter().onDestroy();
+        }
+
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Icepick.saveInstanceState(this, outState);
@@ -72,17 +81,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     protected abstract int getLayout();
 
-    protected abstract BasePresenter getPresenter();
+    protected BasePresenter getPresenter() {
+        return null;
+    }
 
     private void injectDependencies() {
         setupComponent(App.getApp(this).getComponent());
     }
 
-    @SuppressWarnings("unchecked")
-    private void bindToPresenter() {
-        if (getPresenter() != null) {
-            getPresenter().bindView(this);
-        }
+    protected void initializePresenter() {
+
     }
 
     private void injectViews() {

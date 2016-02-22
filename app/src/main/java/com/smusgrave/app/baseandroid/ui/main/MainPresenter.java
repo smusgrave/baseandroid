@@ -2,8 +2,14 @@ package com.smusgrave.app.baseandroid.ui.main;
 
 import com.smusgrave.app.baseandroid.common.BasePresenter;
 
-public interface MainPresenter extends BasePresenter<MainView> {
+public class MainPresenter extends BasePresenter<MainPresenter.View> {
 
-    void handleButtonClick();
+    public void handleButtonClick() {
+        getView().showMessage("Test button clicked!", false);
+    }
+
+    public interface View extends BasePresenter.View {
+
+    }
 
 }

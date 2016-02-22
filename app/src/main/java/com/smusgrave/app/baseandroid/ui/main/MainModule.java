@@ -1,25 +1,17 @@
 package com.smusgrave.app.baseandroid.ui.main;
 
+import com.smusgrave.app.baseandroid.scope.PerFragment;
+
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class MainModule {
 
-    private MainView view;
-
-    public MainModule(MainView view) {
-        this.view = view;
-    }
-
     @Provides
-    public MainView provideView() {
-        return view;
-    }
-
-    @Provides
-    public MainPresenterImpl providePresenter() {
-        return new MainPresenterImpl();
+    @PerFragment
+    public MainPresenter providePresenter() {
+        return new MainPresenter();
     }
 
 }

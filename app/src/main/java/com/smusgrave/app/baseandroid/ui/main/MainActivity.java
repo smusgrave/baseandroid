@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseActivity;
-import com.smusgrave.app.baseandroid.common.BasePresenter;
 
 public class MainActivity extends BaseActivity {
 
@@ -23,11 +22,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected BasePresenter getPresenter() {
-        return null;
     }
 
     @Override

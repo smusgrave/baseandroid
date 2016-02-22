@@ -15,7 +15,7 @@ import com.smusgrave.app.baseandroid.AppComponent;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
-public abstract class BaseFragment extends Fragment implements BaseView {
+public abstract class BaseFragment extends Fragment implements BasePresenter.View {
 
     protected Context context;
     protected View view;
@@ -44,19 +44,31 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         injectDependencies();
-        bindToPresenter();
+        initializePresenter();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        getPresenter().onStart();
+        if (getPresenter() != null) {
+            getPresenter().onStart();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        getPresenter().onStop();
+        if (getPresenter() != null) {
+            getPresenter().onStop();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (getPresenter() != null) {
+            getPresenter().onDestroy();
+        }
     }
 
     @Override
@@ -73,17 +85,15 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     protected abstract int getFragmentLayout();
 
-    protected abstract BasePresenter getPresenter();
+    protected BasePresenter getPresenter() {
+        return null;
+    }
 
     private void injectDependencies() {
         setupComponent(App.getApp(getActivity()).getComponent());
     }
 
-    @SuppressWarnings("unchecked")
-    private void bindToPresenter() {
-        if (getPresenter() != null) {
-            getPresenter().bindView(this);
-        }
+    protected void initializePresenter() {
     }
 
     private void bindViews(View rootView) {

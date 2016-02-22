@@ -11,10 +11,9 @@ import javax.inject.Inject;
 
 import butterknife.OnClick;
 
-public class MainFragment extends BaseFragment implements MainView {
+public class MainFragment extends BaseFragment implements MainPresenter.View {
 
-    @Inject
-    MainPresenterImpl presenter;
+    @Inject MainPresenter presenter;
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
@@ -34,10 +33,15 @@ public class MainFragment extends BaseFragment implements MainView {
     }
 
     @Override
+    protected void initializePresenter() {
+        presenter.bindView(this);
+    }
+
+    @Override
     protected void setupComponent(AppComponent component) {
         DaggerMainComponent.builder()
                 .appComponent(component)
-                .mainModule(new MainModule(this))
+                .mainModule(new MainModule())
                 .build()
                 .inject(this);
     }
