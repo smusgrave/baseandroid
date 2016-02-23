@@ -9,9 +9,9 @@ import javax.inject.Inject;
 
 import butterknife.OnClick;
 
-public class MainFragment extends BaseFragment implements MainPresenter.View {
+public class MainFragment extends BaseFragment implements MainFragmentPresenter.View {
 
-    @Inject MainPresenter presenter;
+    @Inject MainFragmentPresenter presenter;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -42,8 +42,8 @@ public class MainFragment extends BaseFragment implements MainPresenter.View {
     }
 
     @OnClick(R.id.button)
-    void buttonClick() {
-        presenter.handleButtonClick();
+    @Override
+    public void doSomething() {
+        presenter.workOnSomething();
     }
-
 }

@@ -14,5 +14,3 @@ For UI, uses package per feature to keep things clean and modular.
 * Leakcanary
 * Picasso
 * Timber
-
-Originally influenced by [silmood/Spotify-Streamer](https://github.com/silmood/Spotify-Streamer)

@@ -1,6 +1,5 @@
 package com.smusgrave.app.baseandroid.common;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -11,7 +10,9 @@ import android.view.ViewGroup;
 
 import com.smusgrave.app.baseandroid.App;
 import com.smusgrave.app.baseandroid.AppComponent;
+import com.smusgrave.app.baseandroid.R;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
@@ -19,7 +20,8 @@ public abstract class BaseFragment extends Fragment implements BasePresenter.Vie
 
     protected Context context;
     protected View view;
-    protected ProgressDialog progressDialog;
+    @Bind(R.id.progress_bar)
+    View progressBar;
 
     @Override
     public void onAttach(Context context) {
@@ -52,6 +54,22 @@ public abstract class BaseFragment extends Fragment implements BasePresenter.Vie
         super.onStart();
         if (getPresenter() != null) {
             getPresenter().onStart();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getPresenter() != null) {
+            getPresenter().onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (getPresenter() != null) {
+            getPresenter().onPause();
         }
     }
 
@@ -113,14 +131,16 @@ public abstract class BaseFragment extends Fragment implements BasePresenter.Vie
     }
 
     @Override
-    public void showProgress(String message) {
-        progressDialog = ProgressDialog.show(getActivity(), null, message, true);
+    public void showProgress() {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void hideProgress() {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
         }
     }
 

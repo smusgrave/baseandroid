@@ -10,8 +10,8 @@ public class MainModule {
 
     @Provides
     @PerFragment
-    public MainPresenter providePresenter() {
-        return new MainPresenter();
+    public MainFragmentPresenter providePresenter() {
+        return new MainFragmentPresenter();
     }
 
 }
