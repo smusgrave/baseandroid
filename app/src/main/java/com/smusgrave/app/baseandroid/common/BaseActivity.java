@@ -1,5 +1,6 @@
 package com.smusgrave.app.baseandroid.common;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import com.smusgrave.app.baseandroid.App;
 import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
@@ -19,8 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
 
     private Toolbar toolbar;
     protected Fragment fragment;
-    @Bind(R.id.progress_bar)
-    View progressBar;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,16 +97,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
 
     protected abstract int getLayout();
 
-    protected BasePresenter getPresenter() {
-        return null;
-    }
+    protected abstract BasePresenter getPresenter();
 
     private void injectDependencies() {
         setupComponent(App.getApp(this).getComponent());
     }
 
-    protected void initializePresenter() {
-    }
+    protected abstract void initializePresenter();
 
     private void injectViews() {
         ButterKnife.bind(this);
@@ -123,16 +119,14 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
     }
 
     @Override
-    public void showProgress() {
-        if (progressBar != null) {
-            progressBar.setVisibility(View.VISIBLE);
-        }
+    public void showProgress(String message) {
+        progressDialog = ProgressDialog.show(this, null, message, true);
     }
 
     @Override
     public void hideProgress() {
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
+        if (progressDialog != null) {
+            progressDialog.dismiss();
         }
     }
 

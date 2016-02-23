@@ -4,13 +4,9 @@ public abstract class BasePresenter<V extends BasePresenter.View> {
 
     private V view;
 
-    public void bindView(V view) {
+    public void setView(V view) {
         this.view = view;
         onLoad();
-    }
-
-    public void unbindView() {
-        this.view = null;
     }
 
     protected V getView() {
@@ -33,14 +29,14 @@ public abstract class BasePresenter<V extends BasePresenter.View> {
     }
 
     public void onDestroy() {
-        unbindView();
+        setView(null);
     }
 
     public interface View {
 
         void showMessage(String message, boolean longer);
 
-        void showProgress();
+        void showProgress(String message);
 
         void hideProgress();
 

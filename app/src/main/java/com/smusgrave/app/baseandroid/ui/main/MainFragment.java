@@ -29,7 +29,7 @@ public class MainFragment extends BaseFragment implements MainFragmentPresenter.
 
     @Override
     protected void initializePresenter() {
-        presenter.bindView(this);
+        presenter.setView(this);
     }
 
     @Override
