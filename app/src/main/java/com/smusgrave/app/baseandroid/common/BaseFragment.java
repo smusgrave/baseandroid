@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smusgrave.app.baseandroid.App;
-import com.smusgrave.app.baseandroid.AppComponent;
+import com.smusgrave.app.baseandroid.di.AppComponent;
 
 import butterknife.ButterKnife;
 import icepick.Icepick;

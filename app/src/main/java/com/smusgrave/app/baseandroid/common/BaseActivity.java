@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.smusgrave.app.baseandroid.App;
-import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
+import com.smusgrave.app.baseandroid.di.AppComponent;
 
 import butterknife.ButterKnife;
 import icepick.Icepick;
@@ -109,13 +109,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
         ButterKnife.bind(this);
     }
 
-    public abstract void setupComponent(AppComponent appComponent);
+    public abstract void setupComponent(AppComponent component);
 
     @Override
     public void showMessage(String message, boolean longer) {
-        View rootView = this.findViewById(android.R.id.content).getRootView();
+        View view = ButterKnife.findById(this, R.id.coordinator_layout);
+        if (view == null) {
+            view = findViewById(android.R.id.content);
+        }
         int duration = longer ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT;
-        Snackbar.make(rootView, message, duration).show();
+        Snackbar.make(view, message, duration).show();
     }
 
     @Override

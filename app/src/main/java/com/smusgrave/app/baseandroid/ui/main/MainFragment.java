@@ -1,9 +1,9 @@
 package com.smusgrave.app.baseandroid.ui.main;
 
-import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseFragment;
 import com.smusgrave.app.baseandroid.common.BasePresenter;
+import com.smusgrave.app.baseandroid.di.AppComponent;
 
 import javax.inject.Inject;
 
@@ -43,7 +43,7 @@ public class MainFragment extends BaseFragment implements MainFragmentPresenter.
 
     @OnClick(R.id.button)
     @Override
-    public void doSomething() {
-        presenter.workOnSomething();
+    public void onButtonClicked() {
+        presenter.onButtonClick();
     }
 }

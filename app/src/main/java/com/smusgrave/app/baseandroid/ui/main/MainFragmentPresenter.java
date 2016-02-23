@@ -4,13 +4,13 @@ import com.smusgrave.app.baseandroid.common.BasePresenter;
 
 public class MainFragmentPresenter extends BasePresenter<MainFragmentPresenter.View> {
 
-    public void workOnSomething() {
+    public void onButtonClick() {
         getView().showMessage("Something was done. But not really.", false);
     }
 
     public interface View extends BasePresenter.View {
 
-        void doSomething();
+        void onButtonClicked();
 
     }
 

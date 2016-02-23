@@ -1,6 +1,6 @@
 package com.smusgrave.app.baseandroid.ui.main;
 
-import com.smusgrave.app.baseandroid.scope.PerFragment;
+import com.smusgrave.app.baseandroid.di.scope.PerFeature;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,8 +9,14 @@ import dagger.Provides;
 public class MainModule {
 
     @Provides
-    @PerFragment
-    public MainFragmentPresenter providePresenter() {
+    @PerFeature
+    public MainActivityPresenter provideMainActivityPresenter() {
+        return new MainActivityPresenter();
+    }
+
+    @Provides
+    @PerFeature
+    public MainFragmentPresenter provideMainFragmentPresenter() {
         return new MainFragmentPresenter();
     }
 

@@ -3,6 +3,9 @@ package com.smusgrave.app.baseandroid;
 import android.app.Application;
 import android.content.Context;
 
+import com.smusgrave.app.baseandroid.di.AppComponent;
+import com.smusgrave.app.baseandroid.di.AppModule;
+import com.smusgrave.app.baseandroid.di.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 
 import timber.log.Timber;

@@ -1,4 +1,4 @@
-package com.smusgrave.app.baseandroid.scope;
+package com.smusgrave.app.baseandroid.di.scope;
 
 import java.lang.annotation.Retention;
 

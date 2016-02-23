@@ -1,4 +1,4 @@
-package com.smusgrave.app.baseandroid.scope;
+package com.smusgrave.app.baseandroid.di.scope;
 
 import java.lang.annotation.Retention;
 
@@ -6,4 +6,4 @@ import javax.inject.Scope;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Scope @Retention(RUNTIME) public @interface PerActivity {}
+@Scope @Retention(RUNTIME) public @interface PerFeature {}

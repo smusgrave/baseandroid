@@ -4,12 +4,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.smusgrave.app.baseandroid.AppComponent;
 import com.smusgrave.app.baseandroid.R;
 import com.smusgrave.app.baseandroid.common.BaseActivity;
 import com.smusgrave.app.baseandroid.common.BasePresenter;
+import com.smusgrave.app.baseandroid.di.AppComponent;
 
-public class MainActivity extends BaseActivity {
+import javax.inject.Inject;
+
+import butterknife.OnClick;
+
+public class MainActivity extends BaseActivity implements MainActivityPresenter.View {
+
+    @Inject MainActivityPresenter presenter;
 
     private static final String FRAGMENT_TAG = "main_fragment";
 
@@ -27,17 +33,21 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected BasePresenter getPresenter() {
-        return null; // No presenter
+        return presenter;
     }
 
     @Override
     protected void initializePresenter() {
-        // No presenter
+        presenter.setView(this);
     }
 
     @Override
-    public void setupComponent(AppComponent appComponent) {
-        // No dependencies
+    public void setupComponent(AppComponent component) {
+        DaggerMainComponent.builder()
+                .appComponent(component)
+                .mainModule(new MainModule())
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -51,4 +61,9 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.fab)
+    @Override
+    public void onFabClick() {
+        presenter.onFabClicked();
+    }
 }

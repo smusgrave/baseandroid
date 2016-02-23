@@ -1,11 +1,12 @@
-package com.smusgrave.app.baseandroid;
+package com.smusgrave.app.baseandroid.di;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.smusgrave.app.baseandroid.scope.PerApp;
+import com.smusgrave.app.baseandroid.App;
+import com.smusgrave.app.baseandroid.di.scope.PerApp;
 
 import dagger.Module;
 import dagger.Provides;
