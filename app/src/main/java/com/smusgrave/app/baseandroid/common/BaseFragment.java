@@ -81,10 +81,10 @@ public abstract class BaseFragment extends Fragment implements BasePresenter.Vie
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         if (getPresenter() != null) {
             getPresenter().onDestroy();
         }
+        super.onDestroy();
     }
 
     @Override

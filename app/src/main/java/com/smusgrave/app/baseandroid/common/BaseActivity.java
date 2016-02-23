@@ -75,10 +75,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BasePres
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (getPresenter() != null) {
             getPresenter().onDestroy();
         }
+        super.onDestroy();
 
     }
 
